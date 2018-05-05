@@ -19,4 +19,17 @@ public class BerlinMinuteTransformerTest {
         String expectedOutput = "OOOOOOOOOOO" + "\n" + "OOOO";
         assertThat(berlinMinuteTransformer.transform("00")).isEqualTo(expectedOutput);
     }
+
+    @Test
+    public void testWhenHourIs59(){
+        String expectedOutput = "YYRYYRYYRYY" + "\n" + "YYYY";
+        assertThat(berlinMinuteTransformer.transform("59")).isEqualTo(expectedOutput);
+    }
+
+    @Test
+    public void testWhenHourIs17(){
+        String expectedOutput = "YYROOOOOOOO" + "\n" + "YYOO";
+        assertThat(berlinMinuteTransformer.transform("17")).isEqualTo(expectedOutput);
+    }
+
 }

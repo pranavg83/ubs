@@ -16,15 +16,15 @@ public class BerlinMinuteTransformer {
     }
 
     private String replaceQuarterLamps(String fourthRow) {
-        String[] fourthRowBulbs = StringUtils.split(fourthRow);
+        char[] fourthRowBulbs = fourthRow.toCharArray();
         String[] quarterPositions = StringUtils.split(QUARTER_POSITIONS,',');
         for (String quarterPosition : quarterPositions){
-            String bulbStatus = fourthRowBulbs[Integer.parseInt(quarterPosition)-1];
+            String bulbStatus = String.valueOf(fourthRowBulbs[Integer.parseInt(quarterPosition)-1]);
             if (StringUtils.equals(bulbStatus,LampType.getIndicator(MINUTE_ON_LAMP))) {
-                fourthRowBulbs[Integer.parseInt(quarterPosition)-1] = LampType.getIndicator(QUARTER_ON_LAMP);
+                fourthRowBulbs[Integer.parseInt(quarterPosition)-1] = LampType.getIndicator(QUARTER_ON_LAMP).charAt(0);
             }
         }
-        fourthRowBulbs.toString();
+       return String.valueOf(fourthRowBulbs);
     }
 
     private String generateIndicator(LampType lampType, int bulbCount, int maxBulbCount) {
