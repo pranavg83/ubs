@@ -7,7 +7,6 @@ public class BerlinClockRules {
     /**
      * Rules for seconds indicator
      */
-    public static final int MAX_SECONDS_BULB_COUNT = 1;
     public static final LampType SECONDS_EVEN_LAMP = LampType.YELLOW;
     public static final LampType SECONDS_ODD_LAMP = LampType.OFF;
 
