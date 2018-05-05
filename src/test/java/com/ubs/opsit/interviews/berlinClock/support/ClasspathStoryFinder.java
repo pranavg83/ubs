@@ -1,4 +1,4 @@
-package com.ubs.opsit.interviews.support;
+package com.ubs.opsit.interviews.berlinClock.support;
 
 import org.apache.commons.io.filefilter.DirectoryFileFilter;
 import org.apache.commons.io.filefilter.WildcardFileFilter;

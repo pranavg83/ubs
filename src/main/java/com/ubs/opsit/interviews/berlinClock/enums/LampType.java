@@ -1,4 +1,4 @@
-package com.ubs.opsit.interviews.enums;
+package com.ubs.opsit.interviews.berlinClock.enums;
 
 public enum LampType {
 
