@@ -27,6 +27,7 @@ public class BerlinClockRules {
     public static final int FIFTH_ROW_MAX_MINUTE_BULB_COUNT=4;
     public static final LampType MINUTE_ON_LAMP = LampType.YELLOW;
     public static final LampType MINUTE_OFF_LAMP = LampType.OFF;
-    public static final LampType QUARTER_LAMP = LampType.RED;
+    public static final LampType QUARTER_ON_LAMP = LampType.RED;
+    public static final String QUARTER_POSITIONS = "3,6,9";
 
 }
