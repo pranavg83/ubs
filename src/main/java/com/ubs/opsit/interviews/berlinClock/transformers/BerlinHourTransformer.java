@@ -1,7 +1,12 @@
 package com.ubs.opsit.interviews.berlinClock.transformers;
 
+import com.ubs.opsit.interviews.berlinClock.BerlinTimeConverter;
 import com.ubs.opsit.interviews.berlinClock.enums.LampType;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.text.MessageFormat;
 
 import static com.ubs.opsit.interviews.berlinClock.rules.BerlinClockRules.*;
 
@@ -9,6 +14,8 @@ import static com.ubs.opsit.interviews.berlinClock.rules.BerlinClockRules.*;
  * This class transforms hours in HH (24 hour format) to Berlin Lamp Indicator for hours
  */
 public class BerlinHourTransformer {
+
+    private static final Logger LOG = LoggerFactory.getLogger(BerlinHourTransformer.class);
 
      /**
      *
@@ -18,7 +25,9 @@ public class BerlinHourTransformer {
     public String transform(String hourInterval) {
         String secondRow = generateIndicator(HOUR_ON_LAMP,Math.floorDiv(Integer.parseInt(hourInterval), SECOND_ROW_HOUR_INTERVAL));
         String thirdRow = generateIndicator(HOUR_ON_LAMP,Math.floorMod(Integer.parseInt(hourInterval), SECOND_ROW_HOUR_INTERVAL));
-        return secondRow + System.lineSeparator() + thirdRow;
+        String hourIndicator =  secondRow + System.lineSeparator() + thirdRow;
+        LOG.debug(MessageFormat.format("Converted hour interval {0} to Berlin clock time - {1}",hourInterval,hourIndicator));
+        return hourIndicator;
     }
 
     private String generateIndicator(LampType lampType, int bulbCount) {
