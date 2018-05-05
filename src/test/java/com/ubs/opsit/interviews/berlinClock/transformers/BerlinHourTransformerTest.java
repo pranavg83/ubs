@@ -17,25 +17,25 @@ public class BerlinHourTransformerTest {
 
     @Test
     public void testWhenHourIs00(){
-        String expectedOutput = "OOOO" + "\n" + "OOOO";
+        String expectedOutput = "OOOO" + System.lineSeparator() + "OOOO";
         assertThat(berlinHourTransformer.transform("00")).isEqualTo(expectedOutput);
     }
 
     @Test
     public void testWhenHourIs13(){
-        String expectedOutput = "RROO" + "\n" + "RRRO";
+        String expectedOutput = "RROO" + System.lineSeparator() + "RRRO";
         assertThat(berlinHourTransformer.transform("13")).isEqualTo(expectedOutput);
     }
 
     @Test
     public void testWhenHourIs23(){
-        String expectedOutput = "RRRR" + "\n" + "RRRO";
+        String expectedOutput = "RRRR" + System.lineSeparator() + "RRRO";
         assertThat(berlinHourTransformer.transform("23")).isEqualTo(expectedOutput);
     }
 
     @Test
     public void testWhenHourIs24(){
-        String expectedOutput = "RRRR" + "\n" + "RRRR";
+        String expectedOutput = "RRRR" + System.lineSeparator() + "RRRR";
         assertThat(berlinHourTransformer.transform("24")).isEqualTo(expectedOutput);
     }
 }

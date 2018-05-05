@@ -15,20 +15,20 @@ public class BerlinMinuteTransformerTest {
     }
 
     @Test
-    public void testWhenHourIs00(){
-        String expectedOutput = "OOOOOOOOOOO" + "\n" + "OOOO";
+    public void testWhenMinuteIs00(){
+        String expectedOutput = "OOOOOOOOOOO" + System.lineSeparator() + "OOOO";
         assertThat(berlinMinuteTransformer.transform("00")).isEqualTo(expectedOutput);
     }
 
     @Test
-    public void testWhenHourIs59(){
-        String expectedOutput = "YYRYYRYYRYY" + "\n" + "YYYY";
+    public void testWhenMinuteIs59(){
+        String expectedOutput = "YYRYYRYYRYY" + System.lineSeparator() + "YYYY";
         assertThat(berlinMinuteTransformer.transform("59")).isEqualTo(expectedOutput);
     }
 
     @Test
-    public void testWhenHourIs17(){
-        String expectedOutput = "YYROOOOOOOO" + "\n" + "YYOO";
+    public void testWhenMinuteIs17(){
+        String expectedOutput = "YYROOOOOOOO" + System.lineSeparator() + "YYOO";
         assertThat(berlinMinuteTransformer.transform("17")).isEqualTo(expectedOutput);
     }
 

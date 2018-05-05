@@ -10,7 +10,6 @@ import static com.ubs.opsit.interviews.berlinClock.rules.BerlinClockRules.*;
  */
 public class BerlinHourTransformer {
 
-
      /**
      *
      * @param hourInterval - HH (24 hour format)
@@ -19,7 +18,7 @@ public class BerlinHourTransformer {
     public String transform(String hourInterval) {
         String secondRow = generateIndicator(HOUR_ON_LAMP,Math.floorDiv(Integer.parseInt(hourInterval), SECOND_ROW_HOUR_INTERVAL));
         String thirdRow = generateIndicator(HOUR_ON_LAMP,Math.floorMod(Integer.parseInt(hourInterval), SECOND_ROW_HOUR_INTERVAL));
-        return secondRow + "\n" + thirdRow;
+        return secondRow + System.lineSeparator() + thirdRow;
     }
 
     private String generateIndicator(LampType lampType, int bulbCount) {

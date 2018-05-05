@@ -5,6 +5,9 @@ import org.apache.commons.lang.StringUtils;
 
 import static com.ubs.opsit.interviews.berlinClock.rules.BerlinClockRules.*;
 
+/**
+ * This class transforms the minutes to Berlin Lamp Indicator
+ */
 public class BerlinMinuteTransformer {
 
 
@@ -12,7 +15,7 @@ public class BerlinMinuteTransformer {
         String fourthRow = generateIndicator(MINUTE_ON_LAMP,Math.floorDiv(Integer.parseInt(minuteInterval),FOURTH_ROW_MINUTE_INTERVAL),FOURTH_ROW_MAX_MINUTE_BULB_COUNT);
         fourthRow = replaceQuarterLamps(fourthRow);
         String fifthRow = generateIndicator(MINUTE_ON_LAMP,Math.floorMod(Integer.parseInt(minuteInterval),FOURTH_ROW_MINUTE_INTERVAL),FIFTH_ROW_MAX_MINUTE_BULB_COUNT);
-        return fourthRow + "\n" + fifthRow;
+        return fourthRow + System.lineSeparator() + fifthRow;
     }
 
     private String replaceQuarterLamps(String fourthRow) {
