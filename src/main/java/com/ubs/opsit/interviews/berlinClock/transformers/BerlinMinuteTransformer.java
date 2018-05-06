@@ -1,6 +1,7 @@
 package com.ubs.opsit.interviews.berlinClock.transformers;
 
 import com.ubs.opsit.interviews.berlinClock.enums.LampType;
+import com.ubs.opsit.interviews.berlinClock.exceptions.TimeConverterException;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,12 +17,19 @@ public class BerlinMinuteTransformer {
 
     private static final Logger LOG = LoggerFactory.getLogger(BerlinMinuteTransformer.class);
 
-    public String transform(String minuteInterval) {
-        String fourthRow = generateIndicator(MINUTE_ON_LAMP,Math.floorDiv(Integer.parseInt(minuteInterval),FOURTH_ROW_MINUTE_INTERVAL),FOURTH_ROW_MAX_MINUTE_BULB_COUNT);
-        fourthRow = replaceQuarterLamps(fourthRow);
-        String fifthRow = generateIndicator(MINUTE_ON_LAMP,Math.floorMod(Integer.parseInt(minuteInterval),FOURTH_ROW_MINUTE_INTERVAL),FIFTH_ROW_MAX_MINUTE_BULB_COUNT);
-        String minuteIndicator = fourthRow + System.lineSeparator() + fifthRow;
-        LOG.debug(MessageFormat.format("Converted minute interval {0} to Berlin clock time - {1}",minuteInterval,minuteIndicator));
+    public String transform(String minuteInterval) throws TimeConverterException {
+
+        String minuteIndicator;
+        try {
+            String fourthRow = generateIndicator(MINUTE_ON_LAMP, Math.floorDiv(Integer.parseInt(minuteInterval), FOURTH_ROW_MINUTE_INTERVAL), FOURTH_ROW_MAX_MINUTE_BULB_COUNT);
+            fourthRow = replaceQuarterLamps(fourthRow);
+            String fifthRow = generateIndicator(MINUTE_ON_LAMP, Math.floorMod(Integer.parseInt(minuteInterval), FOURTH_ROW_MINUTE_INTERVAL), FIFTH_ROW_MAX_MINUTE_BULB_COUNT);
+            minuteIndicator = fourthRow + System.lineSeparator() + fifthRow;
+            LOG.debug(MessageFormat.format("Converted minute interval {0} to Berlin clock time - {1}", minuteInterval, minuteIndicator));
+        }
+        catch (Exception e)  {
+            throw new TimeConverterException(MessageFormat.format("Exception while converting minutes {0} to Berlin clock time",minuteInterval),e);
+        }
         return minuteIndicator;
     }
 
