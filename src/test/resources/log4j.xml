@@ -8,7 +8,7 @@
         <!-- <param name="Threshold" value="debug" /> -->
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern"
-                   value="%d{yyy-MM-dd'T'HH:mm:ss.SSS} | %-10.10t | %-20.20c{1} | %-6p - %m %n"/>
+                   value="%d{yyy-MM-dd'T'HH:mm:ss.SSS} | %X{id} | %-10.10t | %-20.20c{1} | %-6p - %m %n"/>
         </layout>
     </appender>
 

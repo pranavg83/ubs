@@ -1,10 +1,11 @@
-package com.ubs.opsit.interviews;
+package com.ubs.opsit.interviews.berlinClock;
 
+import com.ubs.opsit.interviews.berlinClock.exceptions.TimeConverterException;
+import com.ubs.opsit.interviews.berlinClock.support.BehaviouralTestEmbedder;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.junit.Test;
 
-import static com.ubs.opsit.interviews.support.BehaviouralTestEmbedder.aBehaviouralTestRunner;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -13,12 +14,12 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class BerlinClockFixture {
 
-    private TimeConverter berlinClock;
+    private TimeConverter berlinClock = new BerlinTimeConverter();
     private String theTime;
 
     @Test
     public void berlinClockAcceptanceTests() throws Exception {
-        aBehaviouralTestRunner()
+        BehaviouralTestEmbedder.aBehaviouralTestRunner()
                 .usingStepsFrom(this)
                 .withStory("berlin-clock.story")
                 .run();
@@ -30,7 +31,7 @@ public class BerlinClockFixture {
     }
 
     @Then("the clock should look like $")
-    public void thenTheClockShouldLookLike(String theExpectedBerlinClockOutput) {
+    public void thenTheClockShouldLookLike(String theExpectedBerlinClockOutput) throws TimeConverterException {
         assertThat(berlinClock.convertTime(theTime)).isEqualTo(theExpectedBerlinClockOutput);
     }
 }

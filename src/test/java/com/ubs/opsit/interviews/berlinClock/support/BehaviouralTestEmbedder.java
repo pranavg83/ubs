@@ -1,4 +1,4 @@
-package com.ubs.opsit.interviews.support;
+package com.ubs.opsit.interviews.berlinClock.support;
 
 import org.jbehave.core.ConfigurableEmbedder;
 import org.jbehave.core.configuration.Configuration;
