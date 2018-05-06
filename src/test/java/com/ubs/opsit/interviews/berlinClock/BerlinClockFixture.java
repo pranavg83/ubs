@@ -1,5 +1,6 @@
 package com.ubs.opsit.interviews.berlinClock;
 
+import com.ubs.opsit.interviews.berlinClock.exceptions.TimeConverterException;
 import com.ubs.opsit.interviews.berlinClock.support.BehaviouralTestEmbedder;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -30,7 +31,7 @@ public class BerlinClockFixture {
     }
 
     @Then("the clock should look like $")
-    public void thenTheClockShouldLookLike(String theExpectedBerlinClockOutput) {
+    public void thenTheClockShouldLookLike(String theExpectedBerlinClockOutput) throws TimeConverterException {
         assertThat(berlinClock.convertTime(theTime)).isEqualTo(theExpectedBerlinClockOutput);
     }
 }
